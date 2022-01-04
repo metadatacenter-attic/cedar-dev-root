@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#microdnf -y install python3.8
+#microdnf -y install python38-PyMySQL
+#microdnf -y install nc
+#maven
+microdnf -y install java-11-openjdk-headless mysql-connector-java
+alternatives --set java java-11-openjdk.x86_64

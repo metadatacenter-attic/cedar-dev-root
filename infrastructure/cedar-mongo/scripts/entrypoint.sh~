@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cmd="mongod --storageEngine $MONGO_STORAGE_ENGINE --dbpath $MONGO_DB_PATH"
+if x${MONGO_AUTH} == "true"
+then
+    cmd = "$cmd --auth"
+fi
+if ${MONGO_JOURNALING} == "true"
+then
+    cmd = "$cmd --logpath ${MONGO_LOG_PATH}
+fi
+
+mongod --auth --dbpath ${MONGO_DB_PATH} --logpath ${MONGO_LOG_PATH}/mongodb.log
+$cmd

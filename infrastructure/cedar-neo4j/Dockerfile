@@ -1,0 +1,12 @@
+FROM neo4j:3.5.3
+#
+# Neo4j Version
+#                        3.5.3
+#
+# Latest version: 4.4.2
+
+ARG CEDAR_NEO4J_USER_NAME
+ARG CEDAR_NEO4J_USER_PASSWORD
+
+ENV NEO4J_AUTH=${CEDAR_NEO4J_USER_NAME}/${CEDAR_NEO4J_USER_PASSWORD}
+

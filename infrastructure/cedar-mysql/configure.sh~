@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mysqld --initialize --user=mysql

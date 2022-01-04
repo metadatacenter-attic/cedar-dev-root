@@ -1,0 +1,31 @@
+version: '3.6'
+services:
+
+  keycloak:
+    container_name: keycloak
+    image: "cedar-keycloak:${CEDAR_DOCKER_VERSION}"
+    build:
+        context: ${CEDAR_HOME}/cedar-docker-build/infrastructure/cedar-keycloak
+        args:
+           CEDAR_KEYCLOAK_ADMIN_USER:     ${CEDAR_KEYCLOAK_ADMIN_USER}
+           CEDAR_KEYCLOAK_ADMIN_PASSWORD: ${CEDAR_KEYCLOAK_ADMIN_PASSWORD}
+           CEDAR_KEYCLOAK_MYSQL_USER:     ${CEDAR_KEYCLOAK_MYSQL_USER}
+           CEDAR_KEYCLOAK_MYSQL_PASSWORD: ${CEDAR_KEYCLOAK_MYSQL_PASSWORD}
+           CEDAR_KEYCLOAK_MYSQL_DB:       ${CEDAR_KEYCLOAK_MYSQL_DB}
+           CEDAR_NET_GATEWAY:             ${CEDAR_NET_GATEWAY}
+           CEDAR_NET_SUBNET:              ${CEDAR_NET_SUBNET}
+           CEDAR_RESOURCE_ADMIN_PORT:     ${CEDAR_RESOURCE_ADMIN_PORT}
+           CEDAR_RESOURCE_HTTP_PORT:      ${CEDAR_RESOURCE_HTTP_PORT}
+           CEDAR_RESOURCE_STOP_PORT:      ${CEDAR_RESOURCE_STOP_PORT}
+           CEDAR_ADMIN_USER_API_KEY:      ${CEDAR_ADMIN_USER_API_KEY}
+
+    networks:
+      - cedarnet
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+
+networks:
+  cedarnet:
+    external: true
+    name: cedarnet
