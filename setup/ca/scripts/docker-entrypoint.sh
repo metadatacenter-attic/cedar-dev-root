@@ -10,4 +10,3 @@ waitForConnection() {
 
 ${CA_SCRIPTS_DIR}/ca.sh
 ${CA_SCRIPTS_DIR}/copyFiles.sh
-waitForConnection

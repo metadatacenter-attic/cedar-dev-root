@@ -98,8 +98,28 @@ services:
       - "8080:8080"
       - "8443:8443"
 
+  nginx:
+    container_name: nginx
+    image: "cedar-nginx:${CEDAR_DOCKER_VERSION}"
+    build:
+        context: ${CEDAR_HOME}/cedar-dev-root/infrastructure/cedar-nginx
+        args:
+          CEDAR_CERTS_VOL:             /var/certs
+    networks:
+       - cedarnet
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - cedar_cert:/var/certs
+
+
 networks:
   cedarnet:
     external: true
     name: cedarnet
 
+volumes:
+  cedar_cert:
+    name: cedar_cert
+    external: true
