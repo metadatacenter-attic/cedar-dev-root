@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  ca:
+    container_name: ca
+    image: "cedar-ca:${CEDAR_DOCKER_VERSION}"
+    build:
+      context: ${CEDAR_HOME}/cedar-dev-root/setup/ca
+      args:
+        CEDAR_CA_PASSWORD:     ${CEDAR_CA_PASSWORD}
+        CEDAR_CA:              /var/ca
+        CEDAR_CERT:            /var/cedar_cert
+    networks:
+      - cedarnet
+    volumes:
+      - cedar_ca:/var/ca
+      - cedar_cert:/var/cedar_cert
+
+networks:
+  cedarnet:
+    external: true
+    name: cedarnet
+
+volumes:
+  cedar_ca:
+    external: true
+  cedar_cert:
+    external: true
+

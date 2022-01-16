@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ${CEDAR_HOME}/cedar-dev-root/infrastructure
+docker-compose up

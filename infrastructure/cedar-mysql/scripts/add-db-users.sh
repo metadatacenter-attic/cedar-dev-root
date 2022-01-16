@@ -1,11 +1,17 @@
 #!/bin/bash
 
-cmd="mysqld --user=mysql --datadir=${MYSQL_DATA_DIR}"
+
+#
+# Use a temporary port so that other services don't think that mysql is up and ready.
+#
+TEMP_PORT=3305
+
+cmd="mysqld --user=mysql --datadir=${MYSQL_DATA_DIR} --port=${TEMP_PORT}"
 $cmd  &
 
-mysqladmin --wait --user root password ${CEDAR_MYSQL_ROOT_PASSWORD}
+mysqladmin --wait --user root password ${CEDAR_MYSQL_ROOT_PASSWORD} --port=${TEMP_PORT}
 
-mysql -u root --password=${CEDAR_MYSQL_ROOT_PASSWORD} <<EOF
+mysql -u root --password=${CEDAR_MYSQL_ROOT_PASSWORD} --port=${TEMP_PORT} <<EOF
 
 CREATE DATABASE IF NOT EXISTS ${CEDAR_KEYCLOAK_MYSQL_DB}; 
 CREATE  USER "${CEDAR_KEYCLOAK_MYSQL_USER}" IDENTIFIED BY "${CEDAR_KEYCLOAK_MYSQL_PASSWORD}";
@@ -22,4 +28,4 @@ GRANT ALL PRIVILEGES ON ${CEDAR_MESSAGING_MYSQL_DB}.* TO "${CEDAR_MESSAGING_MYSQ
 FLUSH PRIVILEGES;
 EOF
 
-mysqladmin --user root --password=${CEDAR_MYSQL_ROOT_PASSWORD} shutdown
+mysqladmin --user root --password=${CEDAR_MYSQL_ROOT_PASSWORD} --port=${TEMP_PORT} shutdown

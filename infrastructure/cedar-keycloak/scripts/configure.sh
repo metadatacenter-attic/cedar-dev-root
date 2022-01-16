@@ -1,12 +1,5 @@
 #!/bin/sh
 
-#mkdir ~/.m2
-#cp ${KEYCLOAK_CONFIG_DIR}/m2/settings.xml  ~/.m2
-#mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:get -DrepoUrl=https://nexus.bmir.stanford.edu/ -Dartifact=org.metadatacenter:cedar-keycloak-event-listener:${CEDAR_VERSION}
-#mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.1:copy -Dartifact=org.metadatacenter:cedar-keycloak-event-listener:${CEDAR_VERSION}:jar -DoutputDirectory=/opt/jboss/keycloak/providers -Dmdep.useBaseVersion=true
-
-
-
 cp -r ${KEYCLOAK_CONFIG_DIR}/themes/cedar-03 /opt/jboss/keycloak/themes/cedar-03
 
 mkdir -p /opt/jboss/realm-import

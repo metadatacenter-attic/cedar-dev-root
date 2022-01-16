@@ -1,5 +1,0 @@
-#!/bin/sh
-
-apt-get update
-apt-get install mysql-server
-apt-get install mysql

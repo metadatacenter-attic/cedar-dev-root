@@ -1,9 +1,0 @@
-#!/bin/sh
-
-ls ${MYSQL_DATA_DIR}
-
-mysqld --user=mysql --datadir=${MYSQL_DATA_DIR}
-while `true`
-do
-    sleep 15
-done

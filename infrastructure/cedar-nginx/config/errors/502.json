@@ -1,5 +1,0 @@
-{
-	"code": "502",
-	"message": "Bad Gateway",
-	"explanation": "The backend server is probably down"
-}
