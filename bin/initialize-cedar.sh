@@ -12,5 +12,7 @@ docker volume create --driver local \
        -o o=bind -o type=none -o device=${CEDAR_HOME}/mounts/src \
        cedar_source
 
+
 cd ${CEDAR_HOME}/cedar-dev-root/setup
-docker-compose up
+MY_UID=`id -u` MY_GID=`id -g` docker-compose up
+

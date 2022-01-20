@@ -15,6 +15,21 @@ services:
       - cedar_ca:/var/ca
       - cedar_cert:/var/cedar_cert
 
+  sources:
+    container_name: sources
+    image: "cedar-sources:${CEDAR_DOCKER_VERSION}"
+    build:
+      context: ${CEDAR_HOME}/cedar-dev-root/setup/sources
+      args:
+        CEDAR_SOURCE:          /src
+        MY_UID:                ${MY_UID}
+        MY_GID:                ${MY_GID}
+    networks:
+      - cedarnet
+    volumes:
+      - cedar_source:/src
+
+
 networks:
   cedarnet:
     external: true
@@ -24,5 +39,7 @@ volumes:
   cedar_ca:
     external: true
   cedar_cert:
+    external: true
+  cedar_source:
     external: true
 

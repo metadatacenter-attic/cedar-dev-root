@@ -1,0 +1,18 @@
+FROM ubuntu
+
+ARG CEDAR_SOURCE
+ENV CEDAR_SOURCE ${CEDAR_SOURCE}
+
+ARG MY_UID
+ENV MY_UID     ${MY_UID}
+ARG MY_GID
+ENV MY_GID     ${MY_GID}
+
+ENV SCRIPT_DIR /scripts
+ADD scripts ${SCRIPT_DIR}
+
+ENV USER cedar
+
+RUN ${SCRIPT_DIR}/install.sh
+
+ENTRYPOINT ${SCRIPT_DIR}/docker-entrypoint.sh

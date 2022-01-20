@@ -2,6 +2,12 @@
 
 cd ${CEDAR_CA}
 
+if [ -e ca.crt ]
+then
+   echo CA already present! Exiting...
+   exit 0
+fi
+   
 #
 # The top level CA prepares (gets a self-signed certificate)
 #
