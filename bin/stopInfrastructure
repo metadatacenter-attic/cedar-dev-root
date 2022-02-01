@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd ${CEDAR_HOME}/cedar-dev-root/infrastructure
+cd ${CEDAR_SOURCE}/cedar-dev-root/infrastructure
 docker-compose down

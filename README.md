@@ -23,17 +23,39 @@ these tools and to provide an automated install of these services
 This will be expanded later and will include steps for deployment and
 other development steps.
 
-1, set CEDAR_HOME, CEDAR_DOCKER_VERSION and run the two scripts
-cedar-profile-docker-eval-[1,2].sh.  This will eventually be one
-script that can be customized.  Also it currently puts a lot of unused
-junk in the environment.
-2. reset-docker.sh - this step should be examined by Docker experts
-because it is destructive.  It approximates resetting docker to its
-original state and images (and containers) might be lost.
-3. initialize-cedar.sh - this step runs a ca (based on a self-signed
-certificate) and checks out the sources (into ${CEDAR_HOME}/src).
-4. startInfrastructure.sh - this step starts the infrastructure.
-5. (for now) start development.
+0. Choose a location for ${CEDAR_HOME} and ${CEDAR_SOURCE}.
+1. Move this project to ${CEDAR_SOURCE}
+0. copy and edit  the environment templates (set-env-internal.sh and
+   set-env-external.sh) to ${CEDAR_HOME}/templates. It will also work
+   if you copy them to ${CEDAR_HOME} but there are some new
+   environment variables and the other scripts don't use the templates
+   directory.
+1. set CEDAR_HOME, CEDAR_SOURCE and run the  script
+   cedar-initialize-env.sh.  The environment needs some more work.
+   The relevant portion of my current .bashrc looks like this:
+```
+   export CEDAR_HOME=/var/CEDAR
+   export CEDAR_SOURCE=${CEDAR_HOME}/src
+   export PATH=$PATH:${CEDAR_SOURCE}/cedar-dev-root/bin:${CEDAR_SOURCE}/cedar-dev-root/bin/util
+   . ${CEDAR_SOURCE}/cedar-dev-root/bin/initialize-environment.sh
+```
+5. reset-docker.sh - this step should be examined by Docker experts
+   because it is destructive.  It approximates resetting docker to its
+   original state and images (and containers) might be lost. 
+6. initialize-cedar.sh - this step runs a ca (based on a self-signed
+   certificate) and checks out the sources (into ${CEDAR_HOME}/src). 
+7. startInfrastructure.sh - this step starts the infrastructure. 
+8. Checkout the sources with git-clone-all.sh and make the files with
+   mvn install on the cedar-project project
+   (${CEDAR_SOURCE}/cedar-parent/cedar-project). The script
+   create-jaxb-patch.sh is the replacement for the clever jaxb
+   patch. The script start-dw-server.sh will start a given 
+   service based on its first argument.
+
+
+# Using eclipse for development
+
+Do a mvn eclipse in the cedar-project project.
 
 # Maintaining the scripts
 

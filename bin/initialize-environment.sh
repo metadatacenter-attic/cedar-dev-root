@@ -1,13 +1,28 @@
 #!/bin/bash
 
+export CEDAR_DOCKER_VERSION=3.0.0
+
 #------------------------------------------------------
 # CEDAR Docker Development Util home folder
-export CEDAR_DEVELOP_HOME=${CEDAR_HOME}/cedar-dev-root
+export CEDAR_DEVELOP_HOME=${CEDAR_SOURCE}/cedar-dev-root
 
 #------------------------------------------------------
 # CEDAR custom environment variables
-source ${CEDAR_HOME}/templates/set-env-external.sh
-source ${CEDAR_HOME}/templates/set-env-internal.sh
+if [ -e ${CEDAR_HOME}/set-env-internal.sh ]
+then
+    echo Using templates from ${CEDAR_HOME}
+    source ${CEDAR_HOME}/set-env-external.sh
+    source ${CEDAR_home}/set-env-internal.sh
+elif [ -e ${CEDAR_HOME}/templates/set-env-internal.sh ]
+then
+    echo Using templates from ${CEDAR_HOME}/templates
+    source ${CEDAR_HOME}/templates/set-env-external.sh
+    source ${CEDAR_HOME}/templates/set-env-internal.sh
+else
+    echo Using source directory templates - really should be copied
+    source ${CEDAR_SOURCE}/bin/templates/set-env-external.sh
+    source ${CEDAR_SOURCE}/bin/templates/set-env-internal.sh
+fi
 
 #------------------------------------------------------
 # CEDAR network settings
@@ -30,4 +45,10 @@ export CEDAR_TEST_USER1_ID="https://metadatacenter.org/users/11111111-2222-3333-
 
 #Test user 2
 export CEDAR_TEST_USER2_ID="https://metadatacenter.org/users/66666666-7777-8888-9999-000000000000"
+#----------------------------------------------------------
+
+#------------------------------------------------------
+# CEDAR Docker aliases
+source ${CEDAR_DEVELOP_HOME}/bin/util/set-env-generic.sh
+
 #----------------------------------------------------------

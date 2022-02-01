@@ -1,4 +1,5 @@
 #!/bin/sh
 
-cd ${CEDAR_HOME}/cedar-dev-root/infrastructure
-docker-compose up
+cd ${CEDAR_SOURCE}/cedar-dev-root/infrastructure
+nohup docker-compose up \
+      > ${CEDAR_HOME}/log/infrastructure/infrastructure.log 2>&1 &
