@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 cd ${CEDAR_CA}
 
 if [ -e ca.crt ]
@@ -20,7 +21,8 @@ echo 00 > serial
 touch index.txt
 touch index.txt.attr
 
-for server in cedar artifact auth component group impex internals \
+for server in mysql \
+	      cedar artifact auth component group impex internals \
 		    messaging open openview repo resource schema \
 		    submission terminology user valuerecommender worker
 do

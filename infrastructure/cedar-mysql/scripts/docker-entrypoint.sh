@@ -13,4 +13,7 @@ if [ ! -e ${MYSQL_SCRIPTS_DIR}/ibdata1 ]
        rm -rf ${MYSQL_DATA_DIR}/*
        ${MYSQL_SCRIPTS_DIR}/configure.sh
    fi
-mysqld --user=mysql --datadir=${MYSQL_DATA_DIR}
+
+#waitForConnection
+
+mysqld --user=mysql --datadir=${MYSQL_DATA_DIR} --ssl 

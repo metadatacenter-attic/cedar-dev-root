@@ -4,7 +4,7 @@ services:
     container_name: ca
     image: "cedar-ca:${CEDAR_DOCKER_VERSION}"
     build:
-      context: ${CEDAR_HOME}/cedar-dev-root/setup/ca
+      context: ${CEDAR_SOURCE}/cedar-dev-root/setup/ca
       args:
         CEDAR_CA_PASSWORD:     ${CEDAR_CA_PASSWORD}
         CEDAR_CA:              /var/ca
@@ -14,21 +14,6 @@ services:
     volumes:
       - cedar_ca:/var/ca
       - cedar_cert:/var/cedar_cert
-
-  sources:
-    container_name: sources
-    image: "cedar-sources:${CEDAR_DOCKER_VERSION}"
-    build:
-      context: ${CEDAR_HOME}/cedar-dev-root/setup/sources
-      args:
-        CEDAR_SOURCE:          /src
-        MY_UID:                ${MY_UID}
-        MY_GID:                ${MY_GID}
-    networks:
-      - cedarnet
-    volumes:
-      - cedar_source:/src
-
 
 networks:
   cedarnet:
@@ -40,6 +25,3 @@ volumes:
     external: true
   cedar_cert:
     external: true
-  cedar_source:
-    external: true
-

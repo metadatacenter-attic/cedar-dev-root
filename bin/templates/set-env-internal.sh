@@ -6,6 +6,10 @@
 
 export CEDAR_CA_PASSWORD=changeme
 
+# keystore passwords
+
+export CEDAR_KEYSTORE_PASSWORD=changeit
+
 # CEDAR hostname for backend services
 export CEDAR_HOST=metadatacenter.orgx
 

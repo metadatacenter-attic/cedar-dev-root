@@ -8,6 +8,8 @@ waitForConnection() {
     done
 }
 
+cp ${MYSQL_CONFIG}/ssl.conf /etc/mysql/conf.d
+
 mkdir --parents ${MYSQL_DATA_DIR}
 chown -R mysql:mysql ${MYSQL_DATA_DIR}
 

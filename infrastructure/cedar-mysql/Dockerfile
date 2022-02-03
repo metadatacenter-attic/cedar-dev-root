@@ -34,6 +34,9 @@ ENV MYSQL_DATA_DIR /var/lib/mysql
 ENV MYSQL_LOG_DIR  /var/log/mysql
 ENV MYSQL_SOCK_DIR /var/run/mysqld
 
+ENV MYSQL_CONFIG=/opt/mysql/config
+ADD config ${MYSQL_CONFIG}
+
 ENV MYSQL_SCRIPTS_DIR /opt/mysql/scripts
 ADD scripts ${MYSQL_SCRIPTS_DIR}
 #RUN ${MYSQL_SCRIPTS_DIR}/install.sh
