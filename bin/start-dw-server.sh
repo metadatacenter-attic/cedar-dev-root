@@ -11,8 +11,8 @@ java \
     -Djavax.net.ssl.keyStorePassword=${CEDAR_KEYSTORE_PASSWORD} \
   -jar target/cedar-$1-server-application-${CEDAR_VERSION}.jar \
   server \
-  "src/main/resources/config.yml"  \
-  > ${logd}/cedar-${1}-server.log 2>&1 &
-echo $! > ${logd}/pid
+  "src/main/resources/config.yml"
+#  > ${logd}/cedar-${1}-server.log 2>&1 &
+#echo $! > ${logd}/pid
 echo --------------------------------------------------------------------------------
 echo

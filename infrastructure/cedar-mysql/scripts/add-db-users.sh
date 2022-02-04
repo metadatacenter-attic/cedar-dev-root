@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #
 # Use a temporary port so that other services don't think that mysql is up and ready.
 #
@@ -24,6 +23,10 @@ GRANT ALL PRIVILEGES ON ${CEDAR_LOG_MYSQL_DB}.* TO "${CEDAR_LOG_MYSQL_USER}";
 CREATE DATABASE IF NOT EXISTS ${CEDAR_MESSAGING_MYSQL_DB};
 CREATE USER "${CEDAR_MESSAGING_MYSQL_USER}" IDENTIFIED BY "${CEDAR_MESSAGING_MYSQL_PASSWORD}";
 GRANT ALL PRIVILEGES ON ${CEDAR_MESSAGING_MYSQL_DB}.* TO "${CEDAR_MESSAGING_MYSQL_USER}";
+
+SET GLOBAL ssl_ca   = "/opt/mysql/config/ca-crt.pem";
+SET GLOBAL ssl_cert = "/opt/mysql/config/mysql.metadatacenter.orgx-crt.pem";
+SET GLOBAL ssl_key  = "/opt/mysql/config/mysql.metadatacenter.orgx-key.pem";
 
 FLUSH PRIVILEGES;
 EOF

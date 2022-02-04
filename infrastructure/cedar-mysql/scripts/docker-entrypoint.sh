@@ -8,12 +8,8 @@ waitForConnection() {
     done
 }
 
-if [ ! -e ${MYSQL_SCRIPTS_DIR}/ibdata1 ]
-   then
-       rm -rf ${MYSQL_DATA_DIR}/*
-       ${MYSQL_SCRIPTS_DIR}/configure.sh
-   fi
+${MYSQL_SCRIPTS_DIR}/configure.sh
 
 #waitForConnection
 
-mysqld --user=mysql --datadir=${MYSQL_DATA_DIR} --ssl 
+mysqld --user=mysql --datadir=${MYSQL_DATA_DIR} --ssl  

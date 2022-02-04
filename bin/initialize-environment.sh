@@ -8,6 +8,8 @@ export CEDAR_DEVELOP_HOME=${CEDAR_SOURCE}/cedar-dev-root
 
 #------------------------------------------------------
 # CEDAR custom environment variables
+source ${CEDAR_SOURCE}/cedar-dev-root/bin/templates/set-env-external.sh
+source ${CEDAR_SOURCE}/cedar-dev-root/bin/templates/set-env-internal.sh
 if [ -e ${CEDAR_HOME}/set-env-internal.sh ]
 then
     echo Using templates from ${CEDAR_HOME}
@@ -19,9 +21,7 @@ then
     source ${CEDAR_HOME}/templates/set-env-external.sh
     source ${CEDAR_HOME}/templates/set-env-internal.sh
 else
-    echo Using source directory templates - really should be copied
-    source ${CEDAR_SOURCE}/bin/templates/set-env-external.sh
-    source ${CEDAR_SOURCE}/bin/templates/set-env-internal.sh
+    echo Using source directory templates only - no customization
 fi
 
 #------------------------------------------------------
