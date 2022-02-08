@@ -8,18 +8,18 @@ export CEDAR_DEVELOP_HOME=${CEDAR_SOURCE}/cedar-dev-root
 
 #------------------------------------------------------
 # CEDAR custom environment variables
-source ${CEDAR_SOURCE}/cedar-dev-root/bin/templates/set-env-external.sh
-source ${CEDAR_SOURCE}/cedar-dev-root/bin/templates/set-env-internal.sh
-if [ -e ${CEDAR_HOME}/set-env-internal.sh ]
+source ${CEDAR_SOURCE}/cedar-dev-root/bin/templates/set-env-external
+source ${CEDAR_SOURCE}/cedar-dev-root/bin/templates/set-env-internal
+if [ -e ${CEDAR_HOME}/set-env-internal ]
 then
     echo Using templates from ${CEDAR_HOME}
-    source ${CEDAR_HOME}/set-env-external.sh
-    source ${CEDAR_home}/set-env-internal.sh
-elif [ -e ${CEDAR_HOME}/templates/set-env-internal.sh ]
+    source ${CEDAR_HOME}/set-env-external
+    source ${CEDAR_home}/set-env-internal
+elif [ -e ${CEDAR_HOME}/templates/set-env-internal ]
 then
     echo Using templates from ${CEDAR_HOME}/templates
-    source ${CEDAR_HOME}/templates/set-env-external.sh
-    source ${CEDAR_HOME}/templates/set-env-internal.sh
+    source ${CEDAR_HOME}/templates/set-env-external
+    source ${CEDAR_HOME}/templates/set-env-internal
 else
     echo Using source directory templates only - no customization
 fi
@@ -35,8 +35,8 @@ source ${CEDAR_DEVELOP_HOME}/bin/util/set-env-generic.sh
 
 #------------------------------------------------------
 # CEDAR aliases and colors for Local Development
-source ${CEDAR_DEVELOP_HOME}/bin/util/set-aliases-and-colors.sh
-source ${CEDAR_DEVELOP_HOME}/bin/util/set-dev-aliases.sh
+#source ${CEDAR_DEVELOP_HOME}/bin/util/set-aliases-and-colors.sh
+#source ${CEDAR_DEVELOP_HOME}/bin/util/set-dev-aliases.sh
 
 #-------------------------------------------------
 # Unit test settings
