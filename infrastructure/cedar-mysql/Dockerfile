@@ -30,6 +30,9 @@ ENV CEDAR_LOG_MYSQL_PASSWORD          ${CEDAR_LOG_MYSQL_PASSWORD}
 ARG CEDAR_LOG_MYSQL_DB
 ENV CEDAR_LOG_MYSQL_DB                ${CEDAR_LOG_MYSQL_DB}
 
+ARG MYSQL_CERTS
+ENV MYSQL_CERTS                       ${MYSQL_CERTS}
+
 ENV MYSQL_DATA_DIR /var/lib/mysql
 ENV MYSQL_LOG_DIR  /var/log/mysql
 ENV MYSQL_SOCK_DIR /var/run/mysqld
@@ -39,8 +42,6 @@ ADD config ${MYSQL_CONFIG}
 
 ENV MYSQL_SCRIPTS_DIR /opt/mysql/scripts
 ADD scripts ${MYSQL_SCRIPTS_DIR}
-#RUN ${MYSQL_SCRIPTS_DIR}/install.sh
-#RUN ${MYSQL_SCRIPTS_DIR}/configure.sh
 
 EXPOSE 3306
 

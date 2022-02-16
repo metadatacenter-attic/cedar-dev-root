@@ -1,0 +1,3 @@
+#!/bin/bash
+
+${CEDAR_SOURCE}/cedar-dev-tools/bin/util/git-clone-all

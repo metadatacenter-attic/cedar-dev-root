@@ -24,6 +24,10 @@ services:
            CEDAR_LOG_MYSQL_USER:           ${CEDAR_LOG_MYSQL_USER}
            CEDAR_LOG_MYSQL_PASSWORD:       ${CEDAR_LOG_MYSQL_PASSWORD}
            CEDAR_LOG_MYSQL_DB:             ${CEDAR_LOG_MYSQL_DB}
+
+           MYSQL_CERTS:                    /opt/mysql/keys
+    volumes:
+       - certs_and_keys_mysql:/opt/mysql/keys
     networks:
        - cedarnet
     ports:
@@ -111,7 +115,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - cedar_cert:/var/certs
+      - certs_and_keys_nginx:/var/certs
 
 
 networks:
@@ -120,6 +124,9 @@ networks:
     name: cedarnet
 
 volumes:
-  cedar_cert:
-    name: cedar_cert
+  certs_and_keys_mysql:
+    external: true
+  certs_and_keys_nginx:
+    external: true
+  certs_and_keys_keycloak:
     external: true

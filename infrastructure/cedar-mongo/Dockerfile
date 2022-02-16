@@ -19,6 +19,9 @@ ENV MONGO_DB_PATH /data/db
 ENV MONGO_LOG_PATH /data/log
 ENV MONGO_STATE_PATH /data/state
 
+ENV MONGO_CONFIG_DIR /opt/mongo/config
+ADD config ${MONGO_CONFIG_DIR}
+
 ENV MONGO_SCRIPTS_DIR /opt/mongo/scripts
 ADD scripts $MONGO_SCRIPTS_DIR
 RUN $MONGO_SCRIPTS_DIR/install.sh

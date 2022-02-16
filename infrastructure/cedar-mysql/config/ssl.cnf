@@ -1,5 +1,5 @@
 
 [mysqld]
-ssl_ca     =   /opt/mysql/config/ca-crt.pem
-ssl_cert   =   /opt/mysql/config/mysql.metadatacenter.orgx-crt.pem
-ssl_key    =   /opt/mysql/config/mysql.metadatacenter.orgx-key.pem
+ssl_ca     =   /opt/mysql/keys/ca-crt.pem
+ssl_cert   =   /opt/mysql/keys/mysql.metadatacenter.orgx-crt.pem
+ssl_key    =   /opt/mysql/keys/mysql.metadatacenter.orgx-key.pem

@@ -6,14 +6,19 @@ services:
     build:
       context: ${CEDAR_SOURCE}/cedar-dev-root/setup/ca
       args:
-        CEDAR_CA_PASSWORD:     ${CEDAR_CA_PASSWORD}
-        CEDAR_CA:              /var/ca
-        CEDAR_CERT:            /var/cedar_cert
+        CEDAR_CA_PASSWORD:           ${CEDAR_CA_PASSWORD}
+        KEYCLOAK_KEYSTORE_PASSWORD:  ${KEYCLOAK_KEYSTORE_PASSWORD}
+        CEDAR_CA:                    /var/ca
+        MYSQL_CERTS:                 /var/certs/mysql
+        NGINX_CERTS:                 /var/certs/nginx
+        KEYCLOAK_CERTS:              /var/certs/keycloak
     networks:
       - cedarnet
     volumes:
       - cedar_ca:/var/ca
-      - cedar_cert:/var/cedar_cert
+      - certs_and_keys_mysql:/var/certs/mysql
+      - certs_and_keys_nginx:/var/certs/nginx
+      - certs_and_keys_keycloak:/var/certs/keycloak
 
 networks:
   cedarnet:
@@ -23,5 +28,9 @@ networks:
 volumes:
   cedar_ca:
     external: true
-  cedar_cert:
+  certs_and_keys_mysql:
+    external: true
+  certs_and_keys_nginx:
+    external: true
+  certs_and_keys_keycloak:
     external: true

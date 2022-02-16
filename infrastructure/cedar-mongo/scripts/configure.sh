@@ -21,3 +21,4 @@ mongo <<EOF
 EOF
 mongod --shutdown
 
+cp ${MONGO_CONFIG_DIR}/mongod.conf /etc/mongod.conf

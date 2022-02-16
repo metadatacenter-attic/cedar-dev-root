@@ -9,5 +9,5 @@ if [ ${MONGO_JOURNALING} == "true" ]
 then
     cmd="$cmd --logpath ${MONGO_LOG_PATH}/mongo.log"
 fi
-
+cmd="$cmd --bind_ip_all"
 $cmd

@@ -1,56 +1,46 @@
 #!/bin/bash
 
-#DEV Util common locations
-export CEDAR_UTIL_BIN=${CEDAR_DEVELOP_HOME}/bin/util/
-
 #CEDAR location aliases
 alias gocedar='cd $CEDAR_HOME'
 
 alias goparent='cd $CEDAR_HOME/cedar-parent'
 alias goproject='cd $CEDAR_HOME/cedar-project'
 
-alias goutil='cd $CEDAR_HOME/cedar-util'
-alias goconf='cd $CEDAR_HOME/cedar-conf'
-alias godocs='cd $CEDAR_HOME/cedar-docs'
-alias goservercore='cd $CEDAR_HOME/cedar-server-core-library'
-alias gomodel='cd $CEDAR_HOME/cedar-model-validation-library'
+alias goutil='cd $CEDAR_SOURCE/cedar-parent/cedar-util'
+alias goservercore='cd $CEDAR_SOURCE/cedar-parent/cedar-server-core-library'
+alias gomodel='cd $CEDAR_SOURCE/cedar-parent/cedar-model-validation-library'
 
-alias goadmintool='cd $CEDAR_HOME/cedar-admin-tool'
+alias goadmintool='cd $CEDAR_SOURCE/cedar-parent/cedar-admin-tool'
 
-alias gogroup='cd $CEDAR_HOME/cedar-group-server'
-alias gomessaging='cd $CEDAR_HOME/cedar-messaging-server'
-alias gorepo='cd $CEDAR_HOME/cedar-repo-server'
-alias goresource='cd $CEDAR_HOME/cedar-resource-server'
-alias goschema='cd $CEDAR_HOME/cedar-schema-server'
-alias goartifact='cd $CEDAR_HOME/cedar-artifact-server'
-alias goterminology='cd $CEDAR_HOME/cedar-terminology-server'
-alias gouser='cd $CEDAR_HOME/cedar-user-server'
-alias govaluerecommender='cd $CEDAR_HOME/cedar-valuerecommender-server'
-alias gosubmission='cd $CEDAR_HOME/cedar-submission-server'
-alias goworker='cd $CEDAR_HOME/cedar-worker-server'
-alias goopenview='cd $CEDAR_HOME/cedar-openview-server'
-alias gointernals='cd $CEDAR_HOME/cedar-internals-server'
-alias goimpex='cd $CEDAR_HOME/cedar-impex-server'
-alias gomkdocs='cd $CEDAR_HOME/cedar-mkdocs'
-alias godevelopment='cd $CEDAR_HOME/cedar-development'
-alias gobuild='cd $CEDAR_HOME/cedar-docker-build'
-alias godeploy='cd $CEDAR_HOME/cedar-docker-deploy'
-alias gocomponent='cd $CEDAR_HOME/cedar-component-distribution'
-alias goceeang='cd $CEDAR_HOME/cedar-cee-demo-angular'
-alias goceeangdist='cd $CEDAR_HOME/cedar-cee-demo-angular-dist'
+alias gogroup='cd $CEDAR_SOURCE/cedar-parent/cedar-group-server'
+alias gomessaging='cd $CEDAR_SOURCE/cedar-parent/cedar-messaging-server'
+alias gorepo='cd $CEDAR_SOURCE/cedar-parent/cedar-repo-server'
+alias goresource='cd $CEDAR_SOURCE/cedar-parent/cedar-resource-server'
+alias goschema='cd $CEDAR_SOURCE/cedar-parent/cedar-schema-server'
+alias goartifact='cd $CEDAR_SOURCE/cedar-parent/cedar-artifact-server'
+alias goterminology='cd $CEDAR_SOURCE/cedar-parent/cedar-terminology-server'
+alias gouser='cd $CEDAR_SOURCE/cedar-parent/cedar-user-server'
+alias govaluerecommender='cd $CEDAR_SOURCE/cedar-parent/cedar-valuerecommender-server'
+alias gosubmission='cd $CEDAR_SOURCE/cedar-parent/cedar-submission-server'
+alias goworker='cd $CEDAR_SOURCE/cedar-parent/cedar-worker-server'
+alias goopenview='cd $CEDAR_SOURCE/cedar-parent/cedar-openview-server'
+alias gointernals='cd $CEDAR_SOURCE/cedar-parent/cedar-internals-server'
+alias goimpex='cd $CEDAR_SOURCE/cedar-parent/cedar-impex-server'
+alias gomkdocs='cd $CEDAR_SOURCE/cedar-parent/cedar-mkdocs'
+alias godevelopment='cd $CEDAR_SOURCE/cedar-parent/cedar-development'
+alias gobuild='cd $CEDAR_SOURCE/cedar-parent/cedar-docker-build'
+alias godeploy='cd $CEDAR_SOURCE/cedar-parent/cedar-docker-deploy'
+alias gocomponent='cd $CEDAR_SOURCE/cedar-parent/cedar-component-distribution'
+alias goceeang='cd $CEDAR_SOURCE/cedar-parent/cedar-cee-demo-angular'
+alias goceeangdist='cd $CEDAR_SOURCE/cedar-parent/cedar-cee-demo-angular-dist'
 
-alias goeventlistener='cd $CEDAR_HOME/cedar-keycloak-event-listener'
+alias goeventlistener='cd $CEDAR_SOURCE/cedar-keycloak-event-listener'
 
 alias goeditor='cd $CEDAR_HOME/cedar-template-editor'
 alias goopenfront='cd $CEDAR_HOME/cedar-openview'
 
 alias gokk='cd ${CEDAR_KEYCLOAK_HOME}/bin'
 
-#CEDAR Git util aliases
-alias cedargstatus='$CEDAR_UTIL_BIN/git/gitstatus.sh'
-alias cedargbranches='$CEDAR_UTIL_BIN/git/gitbranches.sh'
-alias cedargpull='$CEDAR_UTIL_BIN/git/gitpull.sh'
-alias cedargcheckout='$CEDAR_UTIL_BIN/git/git-checkout-branch.sh'
 
 #CEDAR Angular build aliases
 alias buildmetadataform='$CEDAR_UTIL_BIN/angular/build-metadata-form.sh'

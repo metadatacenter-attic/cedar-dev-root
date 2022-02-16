@@ -6,5 +6,7 @@ docker rm ca
 docker rmi -f cedar-ca:3.0.0 cedar-mysql:3.0.0 cedar-elasticsearch:3.0.0
 docker rmi -f cedar-mongo:3.0.0 cedar-neo4j:3.0.0 cedar-keycloak:3.0.0
 docker rmi -f cedar-nginx:3.0.0
-docker volume rm -f cedar_ca cedar_cert
+docker volume rm -f cedar_ca cedar_cert \
+       certs_and_keys_mysql certs_and_keys_nginx \
+       certs_and_keys_keycloak
 docker network rm cedarnet

@@ -7,7 +7,7 @@ echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 startServerAndBg() {
     echo Starting $1
     logd=${CEDAR_HOME}/log/cedar-${1}-server
-    ${CEDAR_SOURCE}/cedar-dev-root/bin/start-dw-server.sh ${1} \
+    ${CEDAR_SOURCE}/cedar-dev-root/bin/start-dw-server ${1} \
         > ${logd}/cedar-${1}-server.log 2>&1 &
     echo $! > ${logd}/pid
     sleep 10
