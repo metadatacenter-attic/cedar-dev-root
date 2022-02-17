@@ -108,14 +108,14 @@ services:
     build:
         context: ${CEDAR_SOURCE}/cedar-dev-root/infrastructure/cedar-nginx
         args:
-          CEDAR_CERTS_VOL:             /var/certs
+          CEDAR_CERTS_VOL:             /opt/certs
     networks:
        - cedarnet
     ports:
       - 80:80
       - 443:443
     volumes:
-      - certs_and_keys_nginx:/var/certs
+      - certs_and_keys_nginx:/opt/certs
 
 
 networks:

@@ -8,6 +8,8 @@ waitForConnection() {
     done
 }
 
-${CA_SCRIPTS_DIR}/ca.sh
+${CA_SCRIPTS_DIR}/ca-setup.sh
+${CA_SCRIPTS_DIR}/ca-certs.sh
+${CA_SCRIPTS_DIR}/ca-misc.sh
 
 #waitForConnection
