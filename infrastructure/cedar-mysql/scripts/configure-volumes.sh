@@ -1,10 +1,20 @@
 #!/bin/bash
 
+if  [ -e ${MYSQL_DATA_DIR}/ibdata1 ]
+then
+    exit 0
+fi
+
+chown mysql:mysql ${MYSQL_CERTS}/*.pem
+
 #
 # Use a temporary port so that other services don't think that mysql is up and ready.
 #
 TEMP_PORT=3305
 
+mysqld --initialize-insecure --user=mysql --datadir=${MYSQL_DATA_DIR} --port=${TEMP_PORT}
+
+echo "Setting up users..."
 cmd="mysqld --user=mysql --datadir=${MYSQL_DATA_DIR} --port=${TEMP_PORT}"
 $cmd  &
 

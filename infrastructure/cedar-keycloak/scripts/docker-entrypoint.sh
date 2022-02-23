@@ -9,7 +9,7 @@ waitForConnection() {
 }
 
 
-export KEYCLOAK_IMPORT=/opt/jboss/realm-import/keycloak-realm.CEDAR.development.20201020.json
+${KEYCLOAK_SCRIPTS_DIR}/configure-volumes.sh
 
 export DB_NAME=MySQL
 export DB_ADDR=${CEDAR_KEYCLOAK_MYSQL_HOST}

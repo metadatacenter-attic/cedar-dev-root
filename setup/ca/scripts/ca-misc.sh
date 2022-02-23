@@ -33,23 +33,31 @@ keytool -importcert -alias MySQLCACert -file ca-crt.pem \
 
 #
 # Make the keycloak keystore which can be created by keycloak because it has its
-# private key and the ${KEYCLOAK_KEYSTORE_PASSWORD}
+# private key and the ${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD}
 #
+
+echo creating pkcs12 keystore
 openssl pkcs12 -export -in auth.metadatacenter.orgx.crt \
                        -inkey auth.metadatacenter.orgx.key \
 		       -out auth.metadatacenter.orgx.pkcs12 \
-		       -password pass:${KEYCLOAK_KEYSTORE_PASSWORD}
+		       -password pass:${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD} \
+		       -name auth.metadatacenter.orgx
 
 
+echo importing pkcs12 keystore into java keystore
 keytool -importkeystore  \
 	-srckeystore auth.metadatacenter.orgx.pkcs12 \
-	-srcstorepass ${KEYCLOAK_KEYSTORE_PASSWORD} \
-	-destkeystore ${KEYCLOAK_CERTS}/keycloak-keystore \
-	-deststorepass ${KEYCLOAK_KEYSTORE_PASSWORD}
+	-srcstorepass ${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD} \
+	-destkeystore keycloak-keystore \
+	-deststorepass ${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD} \
+	-alias auth.metadatacenter.orgx
 
+echo Copying CA files
 cp ca-crt.pem mysql.metadatacenter.orgx-crt.pem ${MYSQL_CERTS}
 cp mysql.metadatacenter.orgx.key \
    ${MYSQL_CERTS}/mysql.metadatacenter.orgx-key.pem
 
 cp ca-crt.pem *.metadatacenter.orgx.* ${NGINX_CERTS}
 rm ${NGINX_CERTS}/mysql.metadatacenter.orgx.key 
+
+cp keycloak-keystore ${KEYCLOAK_CERTS}

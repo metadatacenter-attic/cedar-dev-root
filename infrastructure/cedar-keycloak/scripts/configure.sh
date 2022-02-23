@@ -1,5 +1,14 @@
 #!/bin/sh
 
+waitForConnection()  {
+    mkdir /sleep
+    while [ -e /sleep ]
+    do
+	sleep 2
+    done
+}
+
+
 cp -r ${KEYCLOAK_CONFIG_DIR}/themes/cedar-03 /opt/jboss/keycloak/themes/cedar-03
 
 mkdir -p /opt/jboss/realm-import
@@ -10,28 +19,15 @@ chown -R jboss:jboss /opt/jboss/realm-import
 mkdir -p /opt/jboss/keycloak/standalone/log
 chown -R jboss:jboss /opt/jboss/keycloak/standalone/log
 
-#cp ${KEYCLOAK_SCRIPTS_DIR}/wait-and-init-mysql.py /opt/jboss/
-
-cp ${KEYCLOAK_CONFIG_DIR}/standalone.xml /opt/jboss/keycloak/standalone/configuration/standalone.xml
+cp ${KEYCLOAK_CONFIG_DIR}/standalone.xml ${JBOSS_STANDALONE_CONFIG}/standalone.xml
 
 cp -r ${KEYCLOAK_SCRIPTS_DIR}/custom-scripts/ /opt/jboss/startup-scripts/
 cp    ${KEYCLOAK_SCRIPTS_DIR}/tools/listener.cli /opt/jboss/tools/listener.cli
 
-cd /opt/jboss/keycloak/standalone/configuration
-keytool -genkey -alias auth.metadatacenter.orgx \
-        -keyalg RSA -keystore cedar.keycloak.keystore -validity 3650 <<EOF
-password
-password
-auth.metadatacenter.orgx
-BMIR
-med
-Stanford
-California
-US
-yes
-EOF
 cp ${KEYCLOAK_SCRIPTS_DIR}/cedar-keycloak-event-listener.jar ${CEDAR_KEYCLOAK_HOME}/standalone/deployments/
 
 ${CEDAR_KEYCLOAK_HOME}/bin/add-user-keycloak.sh -r master \
          -u ${CEDAR_KEYCLOAK_ADMIN_USER} -p ${CEDAR_KEYCLOAK_ADMIN_PASSWORD}
+
+export KEYCLOAK_IMPORT=/opt/jboss/realm-import/keycloak-realm.CEDAR.development.20201020.json
 

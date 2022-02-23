@@ -14,7 +14,7 @@ waitForConnection() {
 # can see) to ensure that this volume is present during the
 # initialization of the image.
 #
-${MYSQL_SCRIPTS_DIR}/configure.sh
+${MYSQL_SCRIPTS_DIR}/configure-volumes.sh
 
 #waitForConnection
 

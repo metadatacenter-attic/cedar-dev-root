@@ -20,6 +20,18 @@ export CEDAR_VERSION_MODIFIER=""
 export CEDAR_KEYCLOAK_ADMIN_USER="administrator"
 export CEDAR_KEYCLOAK_ADMIN_PASSWORD="changeme"
 
+#
+# For the time being, changing this password should mean  that the
+# same update is made to the keystore configuration section (in
+# standalone.xml).  I tried making the password be automatically used
+# there using ${env:CEDAR_KEYCLOAK_KEYSTORE_PASSWORD} but this did not
+# seem to work.  It is remotely possible that this is both true and
+# deliberate becuase a password in the environment of a running
+# process is not very secure.
+#
+export CEDAR_KEYCLOAK_KEYSTORE_PASSWORD=password
+export CEDAR_KEYCLOAK_KEY_PASSWORD=${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD}
+
 # cedar-admin user data
 # You should change this before the first run
 # 64 characters, [0-9, a-f]

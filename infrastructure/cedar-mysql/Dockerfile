@@ -42,6 +42,7 @@ ADD config ${MYSQL_CONFIG}
 
 ENV MYSQL_SCRIPTS_DIR /opt/mysql/scripts
 ADD scripts ${MYSQL_SCRIPTS_DIR}
+RUN ${MYSQL_SCRIPTS_DIR}/configure.sh
 
 EXPOSE 3306
 

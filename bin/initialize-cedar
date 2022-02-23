@@ -48,12 +48,3 @@ docker cp ca:/var/ca/mysql.metadatacenter.orgx.crt  ${CERTS}
 
 docker cp ca:/var/ca/java-keystore ${CEDAR_HOME}/.keystore
 
-#
-# Force a rebuild
-#
-docker kill mysql keycloak nginx
-docker rm mysql keycloak nginx
-docker rmi -f cedar-mysql:${CEDAR_DOCKER_VERSION} \
-              cedar-keycloak:${CEDAR_DOCKER_VERSION} \
-	      cedar-nginx:${CEDAR_DOCKER_VERSION}
-

@@ -29,8 +29,6 @@ fi
 export CEDAR_NET_GATEWAY=192.168.17.1
 export CEDAR_NET_SUBNET=192.168.17.0
 #------------------------------------------------------
-# Don't change me yet
-export KEYCLOAK_KEYSTORE_PASSWORD=password
 
 
 #------------------------------------------------------

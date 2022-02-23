@@ -45,8 +45,10 @@
                     <ssl>
                       <keystore path="cedar-keycloak-keystore"
 				relative-to="jboss.server.config.dir"
-				keystore-password="password"
+				keystore-password="${ENV:CEDAR_KEYCLOAK_KEYSTORE_PASSWORD}"
 				alias="auth.metadatacenter.orgx"
+				key-password="${ENV:CEDAR_KEYCLOAK_KEY_PASSWORD}"
+				generate-self-signed-certificate-host="localhost"
 				/>
                     </ssl>
                 </server-identities>
