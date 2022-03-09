@@ -20,9 +20,6 @@ openssl x509 -in mysql.metadatacenter.orgx.crt -out mysql.metadatacenter.orgx-cr
 # #{CEDAR_KEYSTORE_PASSWORD}.
 #
 
-keytool -import -alias metadatacenter.orgx -file ca-crt.pem \
-	-noprompt \
-     -keystore java-keystore -storepass ${CEDAR_KEYSTORE_PASSWORD}
 keytool -import -alias mysql.metadatacenter.orgx \
      -file mysql.metadatacenter.orgx.crt \
 	-noprompt \
@@ -30,6 +27,9 @@ keytool -import -alias mysql.metadatacenter.orgx \
 keytool -importcert -alias MySQLCACert -file ca-crt.pem \
 	-noprompt \
 	-keystore java-keystore -storepass ${CEDAR_KEYSTORE_PASSWORD}
+keytool -import -alias metadatacenter.orgx -file ca-crt.pem \
+	-noprompt -trustcacerts \
+     -keystore java-keystore -storepass ${CEDAR_KEYSTORE_PASSWORD}
 
 #
 # Make the keycloak keystore which can be created by keycloak because it has its

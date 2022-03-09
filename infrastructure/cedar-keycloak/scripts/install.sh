@@ -1,6 +1,8 @@
 #!/bin/sh
 
 waitForConnection()  {
+    echo Waiting for connection...
+    echo ContainerId: `hostname`
     mkdir /sleep
     while [ -e /sleep ]
     do
@@ -8,12 +10,18 @@ waitForConnection()  {
     done
 }
 
-microdnf -y update
+apt-get -y update
 
-#microdnf -y install java-11-openjdk-headless
-#alternatives --set java java-11-openjdk.x86_64
+apt-get -y install mysql-client
+apt-get -y install default-jdk
+apt-get -y install ncat
+apt-get -y install wget
 
-microdnf -y install dnf
-dnf -y install ${KEYCLOAK_CONFIG_DIR}/mysql80-community-release-el8-3.noarch.rpm
-dnf -y install mysql
+cd  ${LFC}
+mv    keycloak-11.0.2/* /opt/jboss/keycloak
 
+mkdir -p ${CEDAR_KEYCLOAK_HOME}/modules/system/layers/base/com/mysql/jdbc/main
+mv mysql-connector-java-5.1.49/mysql-connector-java-5.1.49.jar \
+   ${KEYCLOAK_CONFIG_DIR}
+
+rm -rf *

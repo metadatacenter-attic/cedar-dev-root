@@ -1,6 +1,8 @@
-#!/bin/sh
+k#!/bin/sh
 
 waitForConnection() { 
+    echo Waiting for connection...
+    echo Container ID: mysql
     mkdir /sleep
     while [ -e /sleep ]
     do

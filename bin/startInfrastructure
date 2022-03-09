@@ -1,5 +1,31 @@
 #!/bin/sh
 
+fillLargeFileCache() {
+    directory=$1
+    file=$2
+    url=$3
+
+    cd ${CEDAR_SOURCE}/cedar-dev-root/infrastructure
+    cd ${directory}
+    if [ ! -e ${file} ]
+    then
+	wget ${url}
+	tar -xzf ${file}
+    fi
+}
+
+fillLargeFileCache \
+    cedar-keycloak/largeFileCache \
+    keycloak-11.0.2 \
+    https://downloads.jboss.org/keycloak/11.0.2/keycloak-11.0.2.tar.gz
+
+fillLargeFileCache \
+    cedar-keycloak/largeFileCache \
+    mysql-connector-java-5.1.49.tar.gz \
+    https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.49.tar.gz
+
+
+
 cd ${CEDAR_SOURCE}/cedar-dev-root/infrastructure
 docker-compose up
 #      > ${CEDAR_HOME}/log/infrastructure/infrastructure.log 2>&1 &

@@ -70,6 +70,9 @@ Optionally at this point you may want to reset some portion of
 2. <b>reset-ca</b> is a more targetted version that will only
    delete named objects that are known to be used by the ca.  It is
    still destructive but it is much safer then <b>reset-docker</b>.
+   Reset-ca is designed to keep the same certificate authority key and
+   certificate so that, for example, you do not have to repeat the
+   installing the certificate into firefox step.
 
 ## Initializing the CA
 
@@ -108,8 +111,44 @@ Do a mvn eclipse in the cedar-project project.
 
 # Maintaining the scripts
 
+## Anatomy of my Dockerfiles
+
+1. <b>install.sh</b>
+2. <b>configure.sh</b>
+3. <b>docker-entrypoint.sh</b>
+      * <b>configure-volumes.sh</b>
+      * <b>docker-entrypoint content</b>
+
+## dkill
+
 ## Environment variables
 
 Caution: typos are easily missed and are fatal!
 
 ## Break points
+
+## Debugging networking
+
+If one of the network clients is a java process then you can use the
+<code>
+    -Djavax.net.debug=ALL
+</code>
+option to debug the network connection. This was very handy when I had
+trouble with the system-reset admin call.  My first problem had to do
+with SSL - I did not yet understand the difference between a ketstore
+and a truststore.  When I first started debugging it, I thought that
+the error message meant that the admin client was having trouble
+validating a keycloak certificate.  This puzzled me because - not
+understanding the difference betweeen a keystore and a truststore - I had
+spent some time setting up the keycloak keystore to ensure that it was
+not thrown away.  My unjustified worry was that it was tring to
+validate a localhost certificate that will (and should) always fail.
+
+The above command showed me that the certificate in question was the
+nginx certificate.  It also showed me a list of the trusted ca
+certificates which led me directly to an understanding of keystores
+vs. trust stores.  A trust store is a list of those certificates
+needed to validate external sites.  A keystore is a list of those
+keys and certificates that are needed to identify yourself.
+
+So I was still in trouble.

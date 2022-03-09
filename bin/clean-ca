@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ${CEDAR_SOURCE}/cedar-dev-root/utils
+docker-compose up clean-ca

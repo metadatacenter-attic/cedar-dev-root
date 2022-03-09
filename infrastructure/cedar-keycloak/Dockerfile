@@ -1,4 +1,5 @@
-FROM jboss/keycloak:11.0.2
+FROM ubuntu:jammy
+#FROM jboss/keycloak:11.0.2
 #
 # Keycloak version
 #                    11.0.2
@@ -55,6 +56,9 @@ ENV KEYCLOAK_CONFIG_DIR /opt/jboss/keycloak/config
 ADD config ${KEYCLOAK_CONFIG_DIR}
 
 ENV JBOSS_STANDALONE_CONFIG ${CEDAR_KEYCLOAK_HOME}/standalone/configuration
+
+ENV LFC /opt/jboss/keycloak/largeFileCache
+ADD largeFileCache ${LFC}
 
 ENV KEYCLOAK_SCRIPTS_DIR /opt/jboss/keycloak/scripts
 ADD scripts ${KEYCLOAK_SCRIPTS_DIR}

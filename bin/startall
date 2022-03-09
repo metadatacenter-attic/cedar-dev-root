@@ -4,26 +4,23 @@ echo ---------------------------------------------------------------------------
 echo Starting Dropwizard enabled CEDAR microservices
 echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-startServerAndBg() {
+startServerAndSleep() {
     echo Starting $1
-    logd=${CEDAR_HOME}/log/cedar-${1}-server
-    ${CEDAR_SOURCE}/cedar-dev-root/bin/start-dw-server ${1} \
-        > ${logd}/cedar-${1}-server.log 2>&1 &
-    echo $! > ${logd}/pid
+    ${CEDAR_SOURCE}/cedar-dev-root/bin/util/start-dw-server ${1} 
     sleep 10
 }
 
-startServerAndBg group
-startServerAndBg messaging
-startServerAndBg repo
-startServerAndBg resource
-startServerAndBg schema
-startServerAndBg artifact
-startServerAndBg terminology
-startServerAndBg user
-startServerAndBg valuerecommender
-startServerAndBg submission
-startServerAndBg worker
-startServerAndBg  openview
-startServerAndBg internals
-startServerAndBg impex
+startServerAndSleep group
+startServerAndSleep messaging
+startServerAndSleep repo
+startServerAndSleep resource
+startServerAndSleep schema
+startServerAndSleep artifact
+startServerAndSleep terminology
+startServerAndSleep user
+startServerAndSleep valuerecommender
+startServerAndSleep submission
+startServerAndSleep worker
+startServerAndSleep  openview
+startServerAndSleep internals
+startServerAndSleep impex
