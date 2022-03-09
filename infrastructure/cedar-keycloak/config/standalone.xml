@@ -46,7 +46,7 @@
                       <keystore path="cedar-keycloak-keystore"
 				relative-to="jboss.server.config.dir"
 				keystore-password="password"
-				alias="auth.metadatacenter.orgx"
+				alias="keycloak.metadatacenter.orgx"
 				/>
                     </ssl>
                 </server-identities>
@@ -110,6 +110,9 @@
             <logger category="org.keycloak">
                 <level name="${env.KEYCLOAK_LOGLEVEL:INFO}"/>
             </logger>
+	    <logger category="javax.net.ssl">
+	      <level name="DEBUG"/>
+	    </logger>
             <root-logger>
                 <level name="${env.ROOT_LOGLEVEL:INFO}"/>
                 <handlers>
@@ -618,10 +621,10 @@
     </profile>
     <interfaces>
         <interface name="management">
-            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+            <inet-address value="${jboss.bind.address.management:0.0.0.0}"/>
         </interface>
         <interface name="public">
-            <inet-address value="${jboss.bind.address:127.0.0.1}"/>
+            <inet-address value="${jboss.bind.address:0.0.0.0}"/>
         </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">

@@ -1,25 +1,33 @@
 version: "3.9"
 services:
-  ca:
-    container_name: ca
-    image: "cedar-ca:${CEDAR_DOCKER_VERSION}"
+  clean-ca:
+    container_name: clean-ca
+    image: "cedar-clean-ca:${CEDAR_DOCKER_VERSION}"
     build:
-      context: ${CEDAR_SOURCE}/cedar-dev-root/setup/ca
+      context: ${CEDAR_SOURCE}/cedar-dev-root/utils/clean-ca
+      args:
+        CEDAR_CA:                          /var/ca
+    volumes:
+      - cedar_ca:/var/ca
+
+
+  examine-ca:
+    container_name: examine-ca
+    image: "cedar-examine-ca:${CEDAR_DOCKER_VERSION}"
+    build:
+      context: ${CEDAR_SOURCE}/cedar-dev-root/utils/examine-ca
       args:
         CEDAR_CA_PASSWORD:                 ${CEDAR_CA_PASSWORD}
-        CEDAR_KEYSTORE_PASSWORD:           ${CEDAR_KEYSTORE_PASSWORD}
         CEDAR_KEYCLOAK_KEYSTORE_PASSWORD:  ${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD}
         CEDAR_CA:                          /var/ca
         MYSQL_CERTS:                       /var/certs/mysql
         NGINX_CERTS:                       /var/certs/nginx
-        NEO4J_CERTS:                       /var/certs/neo4j
         KEYCLOAK_CERTS:                    /var/certs/keycloak
     volumes:
       - cedar_ca:/var/ca
       - certs_and_keys_mysql:/var/certs/mysql
       - certs_and_keys_nginx:/var/certs/nginx
       - certs_and_keys_keycloak:/var/certs/keycloak
-      - certs_and_keys_neo4j:/var/certs/neo4j
 
 volumes:
   cedar_ca:
@@ -30,6 +38,3 @@ volumes:
     external: true
   certs_and_keys_keycloak:
     external: true
-  certs_and_keys_neo4j:
-    external: true
-    

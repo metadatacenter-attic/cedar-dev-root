@@ -2,11 +2,18 @@
 
 #stopall.sh
 stopInfrastructure
-docker rm ca
-docker rmi -f cedar-ca:3.0.0 cedar-mysql:3.0.0 cedar-elasticsearch:3.0.0
-docker rmi -f cedar-mongo:3.0.0 cedar-neo4j:3.0.0 cedar-keycloak:3.0.0
-docker rmi -f cedar-nginx:3.0.0
-docker volume rm -f cedar_ca cedar_cert \
-       certs_and_keys_mysql certs_and_keys_nginx \
-       certs_and_keys_keycloak
+
+cd ${CEDAR_SOURCE}/cedar-dev-root/utils
+docker-compose up clean-ca
+
+docker kill ca examine-ca 
+docker rm ca clean-ca examine-ca elasticsearch keycloak mongo mysql neo4j nginx 
+docker rmi -f cedar-ca:${CEDAR_DOCKER_VERSION} 
+docker rmi -f cedar-clean-ca:${CEDAR_DOCKER_VERSION}
+docker rmi -f  cedar-elasticsearch:${CEDAR_DOCKER_VERSION} cedar-keycloak:${CEDAR_DOCKER_VERSION}
+docker rmi -f cedar-mongo:${CEDAR_DOCKER_VERSION} cedar-mysql:${CEDAR_DOCKER_VERSION}
+docker rmi -f cedar-neo4j:${CEDAR_DOCKER_VERSION}  cedar-nginx:${CEDAR_DOCKER_VERSION}
+
+docker volume rm -f certs_and_keys_mysql certs_and_keys_nginx \
+                       certs_and_keys_keycloak certs_and_keys_neo4j
 docker network rm cedarnet

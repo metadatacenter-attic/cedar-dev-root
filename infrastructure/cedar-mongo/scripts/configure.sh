@@ -11,6 +11,7 @@ mongo <<EOF
 	    roles: [ { role: "root", db: "admin" } ]
         }
     )
+    use cedar
     db.createUser(
         {
 	    user:  "${CEDAR_MONGO_APP_USER_NAME}",

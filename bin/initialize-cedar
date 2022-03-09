@@ -18,6 +18,7 @@ docker volume create cedar_ca
 docker volume create certs_and_keys_mysql
 docker volume create certs_and_keys_nginx
 docker volume create certs_and_keys_keycloak
+docker volume create certs_and_keys_neo4j
 
 cd ${CEDAR_SOURCE}/cedar-dev-root/setup
 docker-compose up
@@ -28,7 +29,7 @@ mkdir -p ${CERTS}
 echo -------------------------------
 echo delete any existing certificates
 
-rm ${CEDAR_HOME}/.keystore
+rm -f ${CEDAR_HOME}/.keystore
 
 rm -f ${CERTS}/*
 

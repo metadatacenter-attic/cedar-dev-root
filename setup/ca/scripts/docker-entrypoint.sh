@@ -1,6 +1,7 @@
 #!/bin/sh
 
 waitForConnection() {
+    echo Waiting for connection...
     mkdir /sleep
     while [ -e /sleep ]
     do

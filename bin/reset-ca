@@ -1,13 +1,15 @@
 #!/bin/sh
 
 #stopall
-docker kill ca keycloak mysql nginx
-docker rm ca keycloak mysql nginx
-docker rmi -f cedar-ca:${CEDAR_DOCKER_VERSION} \
-       cedar-keycloak:${CEDAR_DOCKER_VERSION} \
-       cedar-mysql:${CEDAR_DOCKER_VERSION} \
-       cedar-nginx:${CEDAR_DOCKER_VERSION}
+stopInfrastructure
 
-docker volume rm cedar_ca \
-       certs_and_keys_mysql certs_and_keys_nginx \
-       certs_and_keys_keycloak
+cd ${CEDAR_SOURCE}/cedar-dev-root/utils
+docker-compose up clean-ca
+
+docker kill ca examine-ca 
+docker rm ca clean-ca examine-ca 
+docker rmi -f cedar-ca:${CEDAR_DOCKER_VERSION} \
+              cedar-clean-ca:${CEDAR_DOCKER_VERSION}
+docker volume rm certs_and_keys_mysql certs_and_keys_nginx \
+                 certs_and_keys_keycloak certs_and_keys_neo4j
+

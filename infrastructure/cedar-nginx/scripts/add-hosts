@@ -1,0 +1,70 @@
+#!/bin/bash
+
+if [ `id -u` == 0 ]
+then
+    SUDO=""
+else
+    SUDO="sudo"
+fi
+
+INFRASTRUCTURE_HOSTS=(
+    "mysql"
+    "neo4j"
+    "auth"
+    "keycloak"
+)
+
+CEDAR_HOSTS=(
+    "artifact"
+    "cedar"
+    "component"
+    "group"
+    "impex"
+    "internals"
+    "messaging"
+    "open"
+    "openview"
+    "repo"
+    "resource"
+    "schema"
+    "submission"
+    "terminology"
+    "user"
+    "valuerecommender"
+    "worker"
+    "demo.cee"
+    "demo-dist.cee"
+    "docs.cee"
+    "docs-dist.cee"
+    "api-php.cee"
+)
+
+FOUND_HOST=false
+addHost() {
+    host=$1.${CEDAR_HOST}
+    IP=$2
+    ping -c 1 ${host} > /dev/null 2>&1
+
+    if [[ $? != 0 ]];
+    then	
+	if [ ${FOUND_HOST} == "false" ]
+	then
+	    FOUND_HOST=true
+	    printf "\n\n# Added by CEDAR install process on %s from here:\n" `date +%Y.%m.%d` \
+                | ${SUDO} tee --append /etc/hosts > /dev/null
+	fi
+	printf "Adding host %s to /etc/hosts\n" ${host}
+	printf "%s\t%s\n" ${IP} ${host} \
+            | ${SUDO} tee --append /etc/hosts > /dev/null
+    fi
+}
+
+for host in ${CEDAR_HOSTS[@]}
+do
+    addHost ${host} 127.0.0.1
+done
+
+for host in ${INFRASTRUCTURE_HOSTS[@]}
+do
+    addHost ${host} 192.168.17.1
+done

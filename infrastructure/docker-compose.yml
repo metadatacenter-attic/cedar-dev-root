@@ -67,11 +67,14 @@ services:
        args:
           CEDAR_NEO4J_USER_NAME:      ${CEDAR_NEO4J_USER_NAME}
           CEDAR_NEO4J_USER_PASSWORD:  ${CEDAR_NEO4J_USER_PASSWORD}
+          NEO4J_CERTS:                /opt/certs
     networks:
       - cedarnet
     ports:
       - ${CEDAR_NEO4J_REST_PORT}:7474
       - ${CEDAR_NEO4J_BOLT_PORT}:7687
+    volumes:
+      - certs_and_keys_neo4j:/opt/certs
 
 
   keycloak:
@@ -116,6 +119,7 @@ services:
         context: ${CEDAR_SOURCE}/cedar-dev-root/infrastructure/cedar-nginx
         args:
           CEDAR_CERTS_VOL:             /opt/certs
+          CEDAR_HOST:                  ${CEDAR_HOST}
     networks:
        - cedarnet
     ports:
@@ -136,4 +140,6 @@ volumes:
   certs_and_keys_nginx:
     external: true
   certs_and_keys_keycloak:
+    external: true
+  certs_and_keys_neo4j:
     external: true

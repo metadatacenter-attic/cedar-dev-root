@@ -1,12 +1,15 @@
 #!/bin/sh
 
 waitForConnection() {
+    echo Waiting for connect
     mkdir /sleep
     while [ -e /sleep ]
     do
 	sleep 2
     done
 }
+
+${NGINX_SCRIPTS_DIR}/add-hosts
 
 mkdir --parents ${CEDAR_SSL_DIR}
 cp ${NGINX_CONF_DIR}/module-geo.inc.conf          /etc/nginx/cedar

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd ${CEDAR_SOURCE}/cedar-dev-root/utils
+docker-compose up -d examine-ca
+echo Starting shell in the context of the ca.
+echo The first command is probably "cd /var/ca"
+docker exec -it examine-ca bash

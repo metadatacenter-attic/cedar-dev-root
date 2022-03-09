@@ -67,6 +67,13 @@ alias m2cleancedar='rm -rf ~/.m2/repository/org/metadatacenter/*'
 alias startkk='$CEDAR_UTIL_BIN/services-generic/startkeycloak.sh'
 alias killkk='$CEDAR_UTIL_BIN/services-generic/killkeycloak.sh'
 
+dkill() {
+    server=$1
+    docker kill $server
+    docker rm $server
+    docker rmi -f cedar-$server:${CEDAR_DOCKER_VERSION}
+}
+
 alias startmessaging='$CEDAR_UTIL_BIN/services-generic/start-dw-server.sh messaging &'
 alias stopmessaging='$CEDAR_UTIL_BIN/services-generic/stop-dw-server.sh messaging 9212'
 alias startgroup='$CEDAR_UTIL_BIN/services-generic/start-dw-server.sh group &'
