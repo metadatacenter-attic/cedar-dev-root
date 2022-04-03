@@ -20,6 +20,9 @@ ADD config ${NGINX_CONF_DIR}
 
 RUN ${NGINX_SCRIPTS_DIR}/configure.sh
 
+ENV FIRST=/tmp/firstRun
+RUN mkdir ${FIRST}
+
 EXPOSE 80 443
 
 

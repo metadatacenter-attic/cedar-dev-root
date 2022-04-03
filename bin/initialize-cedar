@@ -1,18 +1,20 @@
 #!/bin/bash
+
+echo "Creating network (cedarnet)..."
+docker network create --subnet=${CEDAR_NET_SUBNET}/24 \
+                      --gateway ${CEDAR_NET_GATEWAY} cedarnet
+
 echo WARNING... WARNING...  WARNING...
 echo There are some password prompts when hosts are not completely setup
 
 echo -------------------------------
 echo Modifying /etc/hosts
 echo -------------------------------
-${CEDAR_SOURCE}/cedar-dev-root/bin/util/add-hosts
+${CEDAR_SOURCE}/cedar-dev-root/infrastructure/cedar-nginx/scripts/add-hosts
 
 echo There should be no more password prompts
 
 echo -------------------------------
-echo "Creating network (cedarnet)..."
-docker network create --subnet=${CEDAR_NET_SUBNET}/24 \
-                      --gateway ${CEDAR_NET_GATEWAY} cedarnet
 echo "Creating Certificate Volumes"
 docker volume create cedar_ca
 docker volume create certs_and_keys_mysql

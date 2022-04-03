@@ -58,6 +58,7 @@ cat /tmp/mysql-status
 
 echo if alive MySQL is ready
 
+# waitForConnection
 
 if [ -e /tmp/firstRun ]
 then

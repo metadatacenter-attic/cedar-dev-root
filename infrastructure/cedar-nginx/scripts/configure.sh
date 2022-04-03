@@ -9,7 +9,7 @@ waitForConnection() {
     done
 }
 
-${NGINX_SCRIPTS_DIR}/add-hosts
+${NGINX_SCRIPTS_DIR}/add-hosts 
 
 mkdir --parents ${CEDAR_SSL_DIR}
 cp ${NGINX_CONF_DIR}/module-geo.inc.conf          /etc/nginx/cedar
