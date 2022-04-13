@@ -1,3 +1,4 @@
 *~
 **/*.pem
 **/largeFileCache
+microServices/cedar-*/java/**

@@ -19,23 +19,23 @@ openssl x509 -in mysql.metadatacenter.orgx.crt -out mysql.metadatacenter.orgx-cr
 # make java keystores which can be done by anyone who has the
 # #{CEDAR_KEYSTORE_PASSWORD}.
 #
-
+#
 keytool -import -alias mysql.metadatacenter.orgx \
      -file mysql.metadatacenter.orgx.crt \
 	-noprompt \
-     -keystore java-keystore -storepass ${CEDAR_KEYSTORE_PASSWORD}
+     -keystore java-truststore -storepass ${CEDAR_KEYSTORE_PASSWORD}
 keytool -importcert -alias MySQLCACert -file ca-crt.pem \
 	-noprompt \
-	-keystore java-keystore -storepass ${CEDAR_KEYSTORE_PASSWORD}
+	-keystore java-truststore -storepass ${CEDAR_KEYSTORE_PASSWORD}
 keytool -import -alias metadatacenter.orgx -file ca-crt.pem \
 	-noprompt -trustcacerts \
-     -keystore java-keystore -storepass ${CEDAR_KEYSTORE_PASSWORD}
+     -keystore java-truststore -storepass ${CEDAR_KEYSTORE_PASSWORD}
 
 #
 # Make the keycloak keystore which can be created by keycloak because it has its
 # private key and the ${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD}
 #
-
+f
 echo creating pkcs12 keystore
 openssl pkcs12 -export -in keycloak.metadatacenter.orgx.crt \
                        -inkey keycloak.metadatacenter.orgx.key \

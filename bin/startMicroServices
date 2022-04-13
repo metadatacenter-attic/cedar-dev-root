@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd ${CEDAR_SOURCE}/cedar-dev-root/microServices
+bin/install.sh
+docker-compose up
+
+

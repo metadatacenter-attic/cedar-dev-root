@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  cedar-group:
+    container_name: group
+    image: cedar-group/Dockerfile
+    args:
+        micro:    group
+    networks:
+      - cedarnet
+
+networks:
+  cedarnet:
+    external: true
+    name: cedarnet
+

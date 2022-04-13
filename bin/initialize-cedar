@@ -49,5 +49,5 @@ echo Selective copying of certificates made by CA
 docker cp ca:/var/ca/ca-crt.pem ${CERTS}
 docker cp ca:/var/ca/mysql.metadatacenter.orgx.crt  ${CERTS}
 
-docker cp ca:/var/ca/java-keystore ${CEDAR_HOME}/.keystore
+docker cp ca:/var/ca/java-truststore ${CEDAR_HOME}/.truststore
 
