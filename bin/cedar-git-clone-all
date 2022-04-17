@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cd ${CEDAR_SOURCE}
+
+if [ -e cedar-parent ]
+then
+    echo Exiting! Sources already checked out.
+#    exit 00
+fi
+
+source cedar-dev-root/bin/util/cedar-repos
+
+for i in ${CEDAR_REPOS[@]}
+do
+    echo $i
+    #git clone https://github.com/metadatacenter/$i
+done
+
+cedar-dev-root/bin/util/create-jaxb2-workaround

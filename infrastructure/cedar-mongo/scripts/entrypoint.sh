@@ -1,5 +1,16 @@
 #!/bin/bash
 
+waitForConnection() {
+    echo Waiting for connection...
+    echo ContainerId: mongo
+    mkdir --parents /sleep
+    while [ -e /sleep ]
+    do
+	sleep 5
+    done
+}
+
+
 cmd="mongod --storageEngine $MONGO_STORAGE_ENGINE --dbpath $MONGO_DB_PATH"
 if [ ${MONGO_AUTH} == "true" ]
 then

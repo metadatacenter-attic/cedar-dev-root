@@ -38,9 +38,7 @@ export CEDAR_NET_SUBNET=192.168.17.0
 
 #------------------------------------------------------
 # CEDAR generic environment variables
-echo doing generic stuff
 source ${CEDAR_DEVELOP_HOME}/bin/util/set-env-generic
-echo done -- ${CEDAR_VERSION}
 
 
 #------------------------------------------------------
@@ -57,4 +55,3 @@ export CEDAR_TEST_USER1_ID="https://metadatacenter.org/users/11111111-2222-3333-
 export CEDAR_TEST_USER2_ID="https://metadatacenter.org/users/66666666-7777-8888-9999-000000000000"
 #----------------------------------------------------------
 
-echo done 2  -- ${CEDAR_VERSION}

@@ -1,5 +1,16 @@
 #!/bin/sh
 
+waitForConnection() {
+    echo Waiting for connection...
+    echo Container Id: `hostname`
+    mkdir --parents /sleep
+    while [ -e /sleep ]
+    do
+	sleep 5
+    done
+}
+
+
 mongod --fork --dbpath ${MONGO_DB_PATH} \
        --logpath ${MONGO_LOG_PATH}/mongodb.log
 mongo <<EOF
@@ -23,3 +34,4 @@ EOF
 mongod --shutdown
 
 cp ${MONGO_CONFIG_DIR}/mongod.conf /etc/mongod.conf
+

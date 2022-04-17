@@ -10,7 +10,6 @@ function createLink {
     file=${CEDAR_SOURCE}/cedar-cadsr-tools/src/main/resources/xsd/$1/$2
     mkdir --parents ${bad_dir}
     ln -s ${file} ${bad_dir}
-    echo     ln -s ${file} ${bad_dir}
 }
 
 createLink category ContextCsCsi_0923_modified.xsd

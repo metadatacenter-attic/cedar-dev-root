@@ -2,9 +2,13 @@ version: '3.6'
 services:
   cedar-group:
     container_name: group
-    image: cedar-group/Dockerfile
-    args:
-        micro:    group
+    image: cedar-group:${CEDAR_DOCKER_VERSION}
+    build:
+        context:     ${CEDAR_SOURCE}/cedar-dev-root/microServices/cedar-group
+        args:
+           CEDAR_VERSION:            ${CEDAR_VERSION}
+           CEDAR_VERSION_MODIFIER:   ${CEDAR_VERSION_MODIFIER}
+           micro:                    group
     networks:
       - cedarnet
 

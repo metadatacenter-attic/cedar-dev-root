@@ -1,0 +1,18 @@
+#!/bin/bash
+
+branch=$1
+if [ x$branch =- "x" ]
+then
+   echo "Should take a branch argument"
+   exit -1
+fi
+
+source ${CEDAR_SOURCE}/cedar-dev-root/bin/util/cedar-repos
+
+for i in ${CEDAR_REPOS[@]}
+do
+   cd ${CEDAR_SOURCE}/$i
+   git checkout $branch
+done
+
+

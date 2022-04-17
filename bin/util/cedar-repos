@@ -1,17 +1,5 @@
 #!/bin/bash
 
-cd ${CEDAR_SOURCE}
-
-if [ -e cedar-parent ]
-then
-    echo Exiting! Sources already checked out.
-    exit 00
-fi
-
-#
-# Must already have cedar-dev-root to run this script
-#
-
 CEDAR_REPOS=(
   "cedar-admin-tool"
   "cedar-archetype-exporter"
@@ -54,9 +42,3 @@ CEDAR_REPOS=(
   "cedar-cee-docs-angular-dist"
   "cedar-cee-demo-api-php"
 )
-
-
-for i in ${CEDAR_REPOS[@]}
-do
-    git clone https://github.com/metadatacenter/$i
-done

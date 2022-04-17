@@ -1,15 +1,16 @@
 FROM java:latest
 
+ARG CEDAR_VERSION
+ARG CEDAR_VERSION_MODIFIER
 ARG micro
-ENV micro      ${micro}
 
 ENV JAVA_SRC   /java
 ADD java ${JAVA_SRC}
 
-WORKING_DIR ${JAVA_SRC}/cedar-${micro}-server/cedar-${micro}-server-application
+WORKDIR ${JAVA_SRC}
 
 RUN java \
      -Djavax.net.ssl.trustStore=${CEDAR_HOME}/.truststore \
      -Djavax.net.ssl.trustStorePassword=${CEDAR_KEYSTORE_PASSWORD} \
-     -JAR target/cedar-${micro}-server-application-${CEDAR_VERSION}.jar \
+     -jar target/cedar-${micro}-server-application-${CEDAR_VERSION}${CEDAR_VERSION_MODIFIER}.jar \
      server src/main/resources/config.yml
