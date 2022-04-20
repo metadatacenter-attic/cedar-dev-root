@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd ${CEDAR_SOURCE}
+source cedar-dev-root/bin/util/cedar-repos
+for i in ${CEDAR_REPOS[@]}
+do
+     cd ${CEDAR_SOURCE}
+     cd $i
+     git pull
+done

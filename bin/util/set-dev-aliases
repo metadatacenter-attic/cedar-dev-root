@@ -6,40 +6,38 @@ alias gocedar='cd $CEDAR_HOME'
 alias goparent='cd $CEDAR_HOME/cedar-parent'
 alias goproject='cd $CEDAR_HOME/cedar-project'
 
-alias goutil='cd $CEDAR_SOURCE/cedar-parent/cedar-util'
-alias goservercore='cd $CEDAR_SOURCE/cedar-parent/cedar-server-core-library'
-alias gomodel='cd $CEDAR_SOURCE/cedar-parent/cedar-model-validation-library'
+alias goutil='cd $CEDAR_SOURCE/cedar-util'
+alias goservercore='cd $CEDAR_SOURCE/cedar-server-core-library'
+alias gomodel='cd $CEDAR_SOURCE/cedar-model-validation-library'
 
-alias goadmintool='cd $CEDAR_SOURCE/cedar-parent/cedar-admin-tool'
+alias goadmintool='cd $CEDAR_SOURCE/cedar-admin-tool'
 
-alias gogroup='cd $CEDAR_SOURCE/cedar-parent/cedar-group-server'
-alias gomessaging='cd $CEDAR_SOURCE/cedar-parent/cedar-messaging-server'
-alias gorepo='cd $CEDAR_SOURCE/cedar-parent/cedar-repo-server'
-alias goresource='cd $CEDAR_SOURCE/cedar-parent/cedar-resource-server'
-alias goschema='cd $CEDAR_SOURCE/cedar-parent/cedar-schema-server'
-alias goartifact='cd $CEDAR_SOURCE/cedar-parent/cedar-artifact-server'
-alias goterminology='cd $CEDAR_SOURCE/cedar-parent/cedar-terminology-server'
-alias gouser='cd $CEDAR_SOURCE/cedar-parent/cedar-user-server'
-alias govaluerecommender='cd $CEDAR_SOURCE/cedar-parent/cedar-valuerecommender-server'
-alias gosubmission='cd $CEDAR_SOURCE/cedar-parent/cedar-submission-server'
-alias goworker='cd $CEDAR_SOURCE/cedar-parent/cedar-worker-server'
-alias goopenview='cd $CEDAR_SOURCE/cedar-parent/cedar-openview-server'
-alias gointernals='cd $CEDAR_SOURCE/cedar-parent/cedar-internals-server'
-alias goimpex='cd $CEDAR_SOURCE/cedar-parent/cedar-impex-server'
-alias gomkdocs='cd $CEDAR_SOURCE/cedar-parent/cedar-mkdocs'
-alias godevelopment='cd $CEDAR_SOURCE/cedar-parent/cedar-development'
-alias gobuild='cd $CEDAR_SOURCE/cedar-parent/cedar-docker-build'
-alias godeploy='cd $CEDAR_SOURCE/cedar-parent/cedar-docker-deploy'
-alias gocomponent='cd $CEDAR_SOURCE/cedar-parent/cedar-component-distribution'
-alias goceeang='cd $CEDAR_SOURCE/cedar-parent/cedar-cee-demo-angular'
-alias goceeangdist='cd $CEDAR_SOURCE/cedar-parent/cedar-cee-demo-angular-dist'
+alias gogroup='cd $CEDAR_SOURCE/cedar-group-server'
+alias gomessaging='cd $CEDAR_SOURCE/cedar-messaging-server'
+alias gorepo='cd $CEDAR_SOURCE/cedar-repo-server'
+alias goresource='cd $CEDAR_SOURCE/cedar-resource-server'
+alias goschema='cd $CEDAR_SOURCE/cedar-schema-server'
+alias goartifact='cd $CEDAR_SOURCE/cedar-artifact-server'
+alias goterminology='cd $CEDAR_SOURCE/cedar-terminology-server'
+alias gouser='cd $CEDAR_SOURCE/cedar-user-server'
+alias govaluerecommender='cd $CEDAR_SOURCE/cedar-valuerecommender-server'
+alias gosubmission='cd $CEDAR_SOURCE/cedar-submission-server'
+alias goworker='cd $CEDAR_SOURCE/cedar-worker-server'
+alias goopenview='cd $CEDAR_SOURCE/cedar-openview-server'
+alias gointernals='cd $CEDAR_SOURCE/cedar-internals-server'
+alias goimpex='cd $CEDAR_SOURCE/cedar-impex-server'
+alias gomkdocs='cd $CEDAR_SOURCE/cedar-mkdocs'
+alias godevelopment='cd $CEDAR_SOURCE/cedar-development'
+alias gobuild='cd $CEDAR_SOURCE/cedar-docker-build'
+alias godeploy='cd $CEDAR_SOURCE/cedar-docker-deploy'
+alias gocomponent='cd $CEDAR_SOURCE/cedar-component-distribution'
+alias goceeang='cd $CEDAR_SOURCE/cedar-cee-demo-angular'
+alias goceeangdist='cd $CEDAR_SOURCE/cedar-cee-demo-angular-dist'
 
 alias goeventlistener='cd $CEDAR_SOURCE/cedar-keycloak-event-listener'
 
 alias goeditor='cd $CEDAR_HOME/cedar-template-editor'
 alias goopenfront='cd $CEDAR_HOME/cedar-openview'
-
-alias gokk='cd ${CEDAR_KEYCLOAK_HOME}/bin'
 
 
 #CEDAR Angular build aliases
@@ -103,16 +101,11 @@ alias stopinternals='$CEDAR_UTIL_BIN/services-generic/stop-dw-server.sh internal
 alias startimpex='$CEDAR_UTIL_BIN/services-generic/start-dw-server.sh impex &'
 alias stopimpex='$CEDAR_UTIL_BIN/services-generic/stop-dw-server.sh impex 9208'
 
-alias sleepbetweenstarts='sleep 2'
-
-alias stopall='$CEDAR_UTIL_BIN/services-generic/stopall.sh'
-alias startall='$CEDAR_UTIL_BIN/services-generic/startall.sh'
-
 alias startinfra='$CEDAR_UTIL_BIN/services-generic/startinfra.sh'
 alias stopinfra='$CEDAR_UTIL_BIN/services-generic/stopinfra.sh'
 
 alias cedarenv='set | grep -a CEDAR_'
-alias cedarss='${CEDAR_DEVELOP_HOME}/bin/util/cedarstatus.sh'
+alias cedarss='${CEDAR_DEVELOP_HOME}/bin/util/cedarstatus'
 
 alias ij="'/Applications/IntelliJ IDEA.app/Contents/MacOS/idea'"
 
@@ -120,4 +113,3 @@ alias rmmvn='rm -rf ~/.m2/repository/'
 
 alias copylistener='cp $CEDAR_HOME/cedar-keycloak-event-listener/target/cedar-keycloak-event-listener.jar ${CEDAR_KEYCLOAK_HOME}/standalone/deployments/.'
 
-alias createjaxb2workaround='$CEDAR_UTIL_BIN/create-jaxb2-workaround.sh'

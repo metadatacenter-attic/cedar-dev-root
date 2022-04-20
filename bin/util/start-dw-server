@@ -2,14 +2,16 @@
 echo --------------------------------------------------------------------------------
 echo Starting CEDAR $1 server
 echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-cd ${CEDAR_SOURCE}/cedar-parent/cedar-$1-server/cedar-$1-server-application/
+cd ${CEDAR_SOURCE}/cedar-$1-server/cedar-$1-server-application/
 logd=${CEDAR_HOME}/log/cedar-${1}-server
+mkdir -p ${logd}
 
 java \
     -Djavax.net.debug=all \
     -Djavax.net.ssl.keyStore=${CEDAR_HOME}/.keystore \
     -Djavax.net.ssl.keyStorePassword=${CEDAR_KEYSTORE_PASSWORD} \
-  -jar target/cedar-$1-server-application-${CEDAR_VERSION}.jar \
+    -Dcom.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize \
+  -jar target/cedar-$1-server-application-${CEDAR_VERSION}${CEDAR_VERSION_MODIFIER}.jar \
   server \
   "src/main/resources/config.yml" \
       > ${logd}/cedar-${1}-server.log 2>&1 &

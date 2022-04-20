@@ -96,13 +96,10 @@ Optionally at this point you may want to reset some portion of
 
 ## Starting Development
 
-8. Checkout the sources with git-clone-all.sh an  make the files with
-   mvn install on the cedar-project project
-   (${CEDAR_SOURCE}/cedar-parent/cedar-project). The script
-   create-jaxb-patch.sh is the replacement for the clever jaxb
-   patch. The script start-dw-server.sh will start a given 
-   service based on its first argument.
-9. Now you are ready to develop.
+1. Checkout the sources with cedar-git-clone and do a mvn install in
+   cedar-parent and cedar-project.  If you have jaxb troubles with cedar-cadsr-tool then probably you have
+   not run create-jaxb2-workaround which is a patch for a jaxb bug.
+2. startall starts all the microservices.  It is not a deployment script yet.
 
 
 ### Using eclipse for development
