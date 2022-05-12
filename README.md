@@ -41,7 +41,7 @@ I use the .bashrc to load the environment.   The relevant portion of my current 
    export CEDAR_HOME=/var/CEDAR
    export CEDAR_SOURCE=${CEDAR_HOME}/src
    export PATH=$PATH:${CEDAR_SOURCE}/cedar-dev-root/bin:${CEDAR_SOURCE}/cedar-dev-root/bin/util
-   . ${CEDAR_SOURCE}/cedar-dev-root/bin/initialize-environment.sh
+   . ${CEDAR_SOURCE}/cedar-dev-root/bin/initialize-environment
 ```
 
 ## Resetting docker

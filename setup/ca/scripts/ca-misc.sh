@@ -35,7 +35,7 @@ keytool -import -alias metadatacenter.orgx -file ca-crt.pem \
 # Make the keycloak keystore which can be created by keycloak because it has its
 # private key and the ${CEDAR_KEYCLOAK_KEYSTORE_PASSWORD}
 #
-f
+
 echo creating pkcs12 keystore
 openssl pkcs12 -export -in keycloak.metadatacenter.orgx.crt \
                        -inkey keycloak.metadatacenter.orgx.key \
